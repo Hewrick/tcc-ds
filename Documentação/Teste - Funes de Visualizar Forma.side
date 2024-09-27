@@ -1,0 +1,146 @@
+{
+  "id": "00add8ae-e03d-4f3f-b86c-68781e5cae0c",
+  "version": "2.0",
+  "name": "Teste - Funções de Visualizar Forma",
+  "url": "https://hewrick.github.io",
+  "tests": [{
+    "id": "fad8dbfb-2872-4e5a-994a-e9e14b672265",
+    "name": "Caso 01 - Valores válidos e já testados",
+    "commands": [{
+      "id": "e196dec1-d1c9-4488-bb7a-a067c123abbb",
+      "comment": "",
+      "command": "open",
+      "target": "/TCC/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "da9b3aba-1475-47e2-bd5a-bd4dcfa53e61",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "945x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "664fa212-c898-48ea-9d2a-7fda2125c1a6",
+      "comment": "",
+      "command": "open",
+      "target": "/TCC/geometry.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c3dffdb6-823e-40fe-be1b-27abda8636e3",
+      "comment": "",
+      "command": "click",
+      "target": "id=x-dimension",
+      "targets": [
+        ["id=x-dimension", "id"],
+        ["css=#x-dimension", "css:finder"],
+        ["xpath=//input[@id='x-dimension']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "87ea4158-2120-425c-92fa-33009c3e9be8",
+      "comment": "",
+      "command": "type",
+      "target": "id=x-dimension",
+      "targets": [
+        ["id=x-dimension", "id"],
+        ["css=#x-dimension", "css:finder"],
+        ["xpath=//input[@id='x-dimension']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "10"
+    }, {
+      "id": "fb7f7c49-cd84-494b-8802-cf3ae4da2e39",
+      "comment": "",
+      "command": "click",
+      "target": "id=y-dimension",
+      "targets": [
+        ["id=y-dimension", "id"],
+        ["css=#y-dimension", "css:finder"],
+        ["xpath=//input[@id='y-dimension']", "xpath:attributes"],
+        ["xpath=//div[@id='y-dimension-container']/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "50917fc0-1101-4b9b-bb41-a6292acf7530",
+      "comment": "",
+      "command": "type",
+      "target": "id=y-dimension",
+      "targets": [
+        ["id=y-dimension", "id"],
+        ["css=#y-dimension", "css:finder"],
+        ["xpath=//input[@id='y-dimension']", "xpath:attributes"],
+        ["xpath=//div[@id='y-dimension-container']/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "10"
+    }, {
+      "id": "871d548b-5f86-46c2-be1e-057aaf40c19a",
+      "comment": "",
+      "command": "click",
+      "target": "id=z-dimension",
+      "targets": [
+        ["id=z-dimension", "id"],
+        ["css=#z-dimension", "css:finder"],
+        ["xpath=//input[@id='z-dimension']", "xpath:attributes"],
+        ["xpath=//div[@id='z-dimension-container']/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "07d20b92-74d8-42c9-8806-fa667eb5c7c0",
+      "comment": "",
+      "command": "type",
+      "target": "id=z-dimension",
+      "targets": [
+        ["id=z-dimension", "id"],
+        ["css=#z-dimension", "css:finder"],
+        ["xpath=//input[@id='z-dimension']", "xpath:attributes"],
+        ["xpath=//div[@id='z-dimension-container']/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "10"
+    }, {
+      "id": "c55d4eb1-66e3-467c-8616-667abc39fdf4",
+      "comment": "Clicar no botão para atualizar a forma",
+      "command": "click",
+      "target": "css=button:nth-child(7)",
+      "targets": [
+        ["css=button:nth-child(7)", "css:finder"],
+        ["xpath=//button[@onclick='updateShape()']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Atualizar forma')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "616922dc-ea62-483f-a408-f754640b6062",
+      "comment": "Clicar no botão para calcular o volume",
+      "command": "click",
+      "target": "css=button:nth-child(8)",
+      "targets": [
+        ["css=button:nth-child(8)", "css:finder"],
+        ["xpath=//button[@onclick='calculateVolume()']", "xpath:attributes"],
+        ["xpath=//div[@id='controls']/button[3]", "xpath:idRelative"],
+        ["xpath=//button[3]", "xpath:position"],
+        ["xpath=//button[contains(.,'Calcular Volume')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "7d32bf9e-5a32-4640-a98b-38995a86a03a",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["fad8dbfb-2872-4e5a-994a-e9e14b672265"]
+  }],
+  "urls": ["https://hewrick.github.io/"],
+  "plugins": []
+}
