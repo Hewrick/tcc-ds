@@ -42,7 +42,7 @@ main {
     padding: 20px;
 }
 
-.welcome {
+p.texto-introducao {
     text-align: left;
     font-size: 20px;
 }
