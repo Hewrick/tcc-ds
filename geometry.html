@@ -12,7 +12,7 @@
       top: 10px;
       left: 10px;
       z-index: 1;
-      background: rgb(255, 182, 182);
+      background: rgb(252, 232, 232);
       padding: 10px;
     }
     .control {
@@ -40,19 +40,19 @@
 
     <div class="control">
       <label for="x-dimension">Dimensão X:</label>
-      <input type="text" id="x-dimension" placeholder="Enter dimension" value="1">
+      <input type="text" id="x-dimension" placeholder="Digite o valor em cm" value="1">
       <span class="error-message" id="x-error" style="color: red;"></span>
     </div>
 
     <div class="control" id="y-dimension-container">
       <label for="y-dimension">Dimensão Y:</label>
-      <input type="text" id="y-dimension" placeholder="Enter dimension" value="1">
+      <input type="text" id="y-dimension" placeholder="Digite o valor em cm" value="1">
       <span class="error-message" id="x-error" style="color: red;"></span>
     </div>
 
     <div class="control" id="z-dimension-container">
       <label for="z-dimension">Dimensão Z:</label>
-      <input type="text" id="z-dimension" placeholder="Enter dimension" value="1">
+      <input type="text" id="z-dimension" placeholder="Digite o valor em cm" value="1">
       <span class="error-message" id="x-error" style="color: red;"></span>
     </div>
 
@@ -67,9 +67,9 @@
     </select>
 
     <button onclick="calculateVolume()">Calcular Volume</button>
-    <button onclick="calculateArea()">Calcular Área</button>
-    <button onclick="calculateVolume()">Calcular Volume</button>
-    <button onclick="calculateApotema()">Calcular Apótema</button>
+    <button style="display: none" onclick="calculateArea()">Calcular Área</button>
+    <button style="display: none" onclick="calculateVolume()">Calcular Volume</button>
+    <button style="display: none" onclick="calculateApotema()">Calcular Apótema</button>
     
     <button onclick="updateShape()">ATUALIZAR DADOS & FORMA</button>
     <div id="volume-display" style="margin-top: 10px;"></div>

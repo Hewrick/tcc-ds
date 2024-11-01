@@ -49,52 +49,61 @@ function extractDimensionsFromText(text) {
     return null;
 }
 
+// 1-11-2024
+document.querySelectorAll('#x-dimension, #y-dimension, #z-dimension').forEach(input => {
+    input.addEventListener('input', validateDimensions);
+});
+
+
 function validateDimensions() {
     let valid = true;
-
     const xValue = document.getElementById('x-dimension').value;
     const yValue = document.getElementById('y-dimension').value;
     const zValue = document.getElementById('z-dimension').value;
-
+ 
     // Validate X dimension
     if (!isPositiveNumber(xValue)) {
-        document.getElementById('x-error').textContent = 'Valor inválido para X.';
+        document.getElementById('x-error').textContent = 'Valor inválido para X';
         valid = false;
     } else {
         document.getElementById('x-error').textContent = '';
+        valid = true;
     }
-
+ 
     // Validate Y dimension
     if (!isPositiveNumber(yValue)) {
-        document.getElementById('y-error').textContent = 'Valor inválido para Y.';
+        document.getElementById('y-error').textContent = 'Valor inválido para Y';
         valid = false;
     } else {
         document.getElementById('y-error').textContent = '';
+        valid = true;
     }
-
+ 
     // Validate Z dimension
     if (!isPositiveNumber(zValue)) {
-        document.getElementById('z-error').textContent = 'Valor inválido para Z.';
+        document.getElementById('z-error').textContent = 'Valor inválido para Z';
         valid = false;
     } else {
         document.getElementById('z-error').textContent = '';
+        valid = true;
     }
-
+ 
     // Enable or disable buttons based on validation
     toggleButtons(valid);
 }
-
+ 
+// Função para validar se o número é positivo e sem texto ou símbolos
 function isPositiveNumber(value) {
-    return /^\d+(\.\d+)?$/.test(value); // Checks if it's a positive number (integer or float)
+    return /^\d+(\.\d+)?$/.test(value); // Verifica se é um número positivo (inteiro ou decimal)
 }
-
+ 
+// Habilita ou desabilita botões com base na validação
 function toggleButtons(valid) {
     const buttonsToDisable = [
         document.getElementById('image-input'),
         document.querySelector('button[onclick="readImageAndExtractDimensions()"]'),
         document.querySelector('button[onclick="updateShape()"]')
     ];
-
     buttonsToDisable.forEach(button => {
         button.disabled = !valid;
     });
