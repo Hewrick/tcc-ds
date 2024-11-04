@@ -1,4 +1,4 @@
-function readImageAndExtractDimensions() {
+function extractDimensions() {
     const imageInput = document.getElementById('image-input');
     const file = imageInput.files[0];
 
@@ -33,7 +33,6 @@ function readImageAndExtractDimensions() {
     reader.readAsDataURL(file);
 }
 
-
 function extractDimensionsFromText(text) {
     const regex = /X:\s*(\d+)\s*Y:\s*(\d+)\s*Z:\s*(\d+)/i;
     const match = text.match(regex);
@@ -49,7 +48,6 @@ function extractDimensionsFromText(text) {
     return null;
 }
 
-// 1-11-2024
 document.querySelectorAll('#x-dimension, #y-dimension, #z-dimension').forEach(input => {
     input.addEventListener('input', validateDimensions);
 });
@@ -63,7 +61,7 @@ function validateDimensions() {
  
     // Validate X dimension
     if (!isPositiveNumber(xValue)) {
-        document.getElementById('x-error').textContent = 'Valor inválido para X';
+        document.getElementById('x-error').textContent = 'Valor inválido para cálculo';
         valid = false;
     } else {
         document.getElementById('x-error').textContent = '';
@@ -72,7 +70,7 @@ function validateDimensions() {
  
     // Validate Y dimension
     if (!isPositiveNumber(yValue)) {
-        document.getElementById('y-error').textContent = 'Valor inválido para Y';
+        document.getElementById('y-error').textContent = 'Valor inválido para cálculo';
         valid = false;
     } else {
         document.getElementById('y-error').textContent = '';
@@ -81,7 +79,7 @@ function validateDimensions() {
  
     // Validate Z dimension
     if (!isPositiveNumber(zValue)) {
-        document.getElementById('z-error').textContent = 'Valor inválido para Z';
+        document.getElementById('z-error').textContent = 'Valor inválido para cálculo';
         valid = false;
     } else {
         document.getElementById('z-error').textContent = '';
