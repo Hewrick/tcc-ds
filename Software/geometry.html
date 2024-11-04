@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizador de formas</title>
+  <style>
+    body { margin: 0; }
+    canvas { display: flex; }
+    #controls {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 1;
+      background: rgb(252, 232, 232);
+      padding: 10px;
+    }
+    .control {
+      margin-bottom: 10px;
+    }
+    input[type="text"] {
+      width: 100%;
+    }
+    button {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="controls">
+    <div class="control">
+      <label for="shape-type">Selecione a forma:</label>
+      <select id="shape-type">
+        <option value="cube">Cubo</option>
+        <option value="pyramid">Pirâmide</option>
+        <option value="sphere">Esfera</option>
+      </select>
+    </div>
+
+    <div class="control">
+      <label for="x-dimension">Dimensão X:</label>
+      <input type="text" id="x-dimension" placeholder="Digite o valor em cm" value="1">
+      <span class="error-message" id="x-error" style="color: red;"></span>
+    </div>
+
+    <div class="control" id="y-dimension-container">
+      <label for="y-dimension">Dimensão Y:</label>
+      <input type="text" id="y-dimension" placeholder="Digite o valor em cm" value="1">
+      <span class="error-message" id="x-error" style="color: red;"></span>
+    </div>
+
+    <div class="control" id="z-dimension-container">
+      <label for="z-dimension">Dimensão Z:</label>
+      <input type="text" id="z-dimension" placeholder="Digite o valor em cm" value="1">
+      <span class="error-message" id="x-error" style="color: red;"></span>
+    </div>
+
+    <input type="file" id="image-input" accept="image/*">
+    <button onclick="readImageAndExtractDimensions()">Ler imagem e extrair dimensões</button>
+    
+    <select id="calc-type">  
+      <option></option>
+      <option></option>
+      <option></option>
+      <option></option>
+    </select>
+
+    <button onclick="calculateVolume()">Calcular Volume</button>
+    <button style="display: none" onclick="calculateArea()">Calcular Área</button>
+    <button style="display: none" onclick="calculateVolume()">Calcular Volume</button>
+    <button style="display: none" onclick="calculateApotema()">Calcular Apótema</button>
+    
+    <button onclick="updateShape()">ATUALIZAR DADOS & FORMA</button>
+    <div id="volume-display" style="margin-top: 10px;"></div>
+    <button onclick="window.location.href='historico.html'">Ver Histórico</button>
+    <button onclick="window.location.href='index.html'">Voltar ao Início</button>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.4/dist/tesseract.min.js"></script>
+  <script src="app.js"></script>
+  <script src="ocr.js"></script>
+</body>
+</html>
