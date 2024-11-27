@@ -1,13 +1,12 @@
 /* 
--> Comando para installar o Three.js (usar no console do computador):
-npm install three
+ * -> Comando para installar o Three.js (usar no console do computador): npm install three
 */
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 
-//tentar: render.setSize(window.document.body.sim);
+//tentar: render.setSize(window.document.body.simulacao);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -16,11 +15,11 @@ camera.position.z = 15;
 let shape;
 let volume = 0;
 
-// inicializar função do mouse
+// Inicializa a função do mouse
 let isDragging = false;
 let previousMousePosition = { x: 0, y: 0 };
 
-// atualizar forma
+// Atualizar forma - inicio
 function updateShape() {
   const shapeType = document.getElementById('shape-type').value;
   const xDimension = parseFloat(document.getElementById('x-dimension').value) || 1;
@@ -51,13 +50,14 @@ function updateShape() {
   shape = new THREE.Mesh(geometry, material);
   scene.add(shape);
 
-  // salvar no histórico
+  // Chama a função para salvar o histórico
   saveShapeToHistory(shapeType, {
       x: xDimension,
       y: yDimension,
       z: zDimension
   }, volume);
 }
+// Atualizar forma - fim
 
 
 function calculateVolume() {
@@ -86,7 +86,8 @@ document.getElementById('shape-type').addEventListener('change', handleShapeChan
 handleShapeChange();
 updateShape();
 
-// mexer a forma
+
+// Mexer a forma - inicio
 document.addEventListener('mousedown', (event) => {
     if (event.button === 0) {
         isDragging = true;
@@ -113,8 +114,9 @@ document.addEventListener('mousemove', (event) => {
         y: event.clientY
     };
 });
+// Mexer a forma - fim
 
-//zoom no scroll do mouse
+// Zoom no scroll do mouse - inicio
 document.addEventListener('wheel', (event) => {
     camera.position.z += event.deltaY * 0.01;
     camera.position.z = Math.max(2, Math.min(100, camera.position.z));
@@ -135,8 +137,11 @@ window.addEventListener('resize', () => {
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
 });
+// Zoom no scroll do mouse - fim
+
 
 // -__ funções historico __-
+
 function saveShapeToHistory(shapeType, dimensions, volume) {
   let history = JSON.parse(localStorage.getItem('shapeHistory')) || [];
 

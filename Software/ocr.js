@@ -1,3 +1,8 @@
+/* Código para reconhecimento ótico de caracteres
+ * 
+ * 
+ */
+
 function extractDimensions() {
     const imageInput = document.getElementById('image-input');
     const file = imageInput.files[0];

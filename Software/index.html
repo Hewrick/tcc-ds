@@ -1,27 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShapeX</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="">
+  <title>ShapeX</title>
 </head>
 <body>
-    <header>
-        <h1>ShapeX</h1>
-        <div class="header-buttons">
-            <button onclick="window.location.href='apostila.html'">Apostila</button>
-            <button onclick="window.location.href='geometry.html'">Visualizar Forma</button>
-            <button onclick="window.location.href='historico.html'">Histórico</button>
-        </div>
-    </header>
-    <main>
-        <div class="introducao">
-            <p class="texto">
-            Bem-vindo! <br>
+  <div id="content-geral">
+    <div id="controls">
+      <div class="control">
+        <label for="shape-type">Selecione a forma:</label>
+        <select id="shape-type">
+          <option value="cube">Cubo</option>
+          <option value="pyramid">Pirâmide</option>
+          <option value="sphere">Esfera</option>
+        </select>
+      </div>
 
-            </p>
-        </div>
-    </main>
+      <div class="controls">
+        <label for="x-dimension">Dimensão X</label>
+        <input type="text" id="x-dimension" class="inputDimension" placeholder="Digite o valor em cm">
+        <span class="error-message" id="x-error" style="color: red;"></span>
+      </div>
+
+      <div class="controls" id="y-dimension-container">
+        <label for="y-dimension">Dimensão Y</label>
+        <input type="text" id="y-dimension" class="inputDimension" placeholder="Digite o valor em cm">
+        <span class="error-message" id="y-error" style="color: red;"></span>
+      </div>
+
+      <div class="controls" id="z-dimension-container">
+        <label for="z-dimension">Dimensão Z</label>
+        <input type="text" id="z-dimension" class="inputDimension" placeholder="Digite o valor em cm">
+        <span class="error-message" id="z-error" style="color: red;"></span>
+      </div>
+
+      <input type="file" id="image-input" accept="image/*">
+
+      <button id="extractDimensions" onclick="extractDimensions()">Ler imagem e extrair dimensões</button>
+      
+      <!-- Mudar tudo isso e colocar o resultado pronto em uma div na parte inferior do site ->
+      <label for="calc-type">Selecione o cálculo</label>
+      <select id="calc-type">  
+        <option value="area"></option>
+        <option value="volume"></option>
+        <option value="apotema"></option>
+        <option></option>
+      </select> -->
+
+      <button onclick="calculateVolume()">Calcular Volume</button>
+      <button style="display: none" onclick="calculateArea()">Calcular Área</button>
+      <button style="display: none" onclick="calculateVolume()">Calcular Volume</button>
+      <button style="display: none" onclick="calculateApotema()">Calcular Apótema</button>
+      
+      <button onclick="updateShape()">ATUALIZAR DADOS & FORMA</button>
+      <div id="volume-display" style="margin-top: 10px;"></div>
+      <button onclick="window.location.href='historico.html'">Histórico</button>
+      <button onclick="window.location.href='index.html'">Voltar ao Início</button>
+    </div>
+
+    <div id="simulacao">
+      
+    </div> 
+
+    <div id="results">
+
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.4/dist/tesseract.min.js"></script>
+  <script src="app.js"></script>
+  <script src="ocr.js"></script>
 </body>
 </html>

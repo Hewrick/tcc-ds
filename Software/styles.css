@@ -1,5 +1,5 @@
-/* index */
-
+/* geral e genéricos */
+    
 body {
     background-color: white;
     color: #333;
@@ -8,18 +8,19 @@ body {
     padding: 0;
 }
 
-header {
+#content-geral {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;                  /* essa linha deixa o espaço a mais feio */
+}
+
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #e60000;
     padding: 20px;
     color: white;
-}
-
-h1 {
-    margin: 0;
-    font-size: 24px;
 }
 
 .header-buttons button {
@@ -32,43 +33,73 @@ h1 {
     margin-left: 10px;
 }
 
-.header-buttons button:hover {
+.header-buttons:hover button {
     background-color: #cc0000;
 }
 
-main {
+
+
+
+/* Manual */
+
+
+
+
+/* Cabeçalho */
+
+
+
+
+/* Controles */
+
+#controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    background: rgb(252, 232, 232);
+    padding: 10px;
+}
+#extractDimensions{
+    margin-bottom: 10px;
+}
+.control {
+    margin-bottom: 10px;
+}
+.inputDimension {
+    width: 98%;
+}
+input[type="file"] {
+    margin-bottom: 10px;
+}
+button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+canvas { display: flex; }
+
+#simulacao {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
 }
 
-p.texto-introducao {
-    text-align: left;
-    font-size: 20px;
-}
-
-.recommendations {
-    text-align: right;
-    font-size: 20px;
-}
-
-.placeholder-boxes {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-top: 10px;
-}
-
-.placeholder-boxes .box {
-    width: 200px;
-    height: 200px;
-    background-color: #f0f0f0;
-    border: 2px dashed #ccc;
-    margin-top: 20px;
+#results {
+    height: 100%;
+    background-color: blue; 
 }
 
 
-/* histórico */
+/* Simulação*/
+
+
+
+
+/* Resultados */
+
+
+
+
+/* Histórico */
 
 button {
     background-color: #e60000;
