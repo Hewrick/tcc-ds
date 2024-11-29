@@ -1,43 +1,28 @@
-function transcribeAndDistribute() {
-    const imageInput = document.getElementById('image-input');
-    const file = imageInput.files[0];
+function transcribeAndDistribute(imageSource) {
+    const image = new Image();
+    image.src = imageSource;
 
-    if (!file) {
-        alert('Por favor, selecione uma imagem.');
-        return;
-    }
+    Tesseract.recognize(
+        image,
+        'eng',
+        { logger: m => console.log(m) }
+    ).then(({ data: { text } }) => {
+        console.log('Texto reconhecido:', text);
 
-    const reader = new FileReader();
+        const values = extractAndDistributeValues(text);
 
-    reader.onload = function (event) {
-        const image = new Image();
-        image.src = event.target.result;
-
-        Tesseract.recognize(
-            image,
-            'eng',
-            { logger: m => console.log(m) } 
-        ).then(({ data: { text } }) => {
-            console.log('Texto reconhecido:', text);
-
-            // extrair e distribuir corretamente
-            const values = extractAndDistributeValues(text);
-
-            if (values) {
-                document.getElementById('x-dimension').value = values.x || '';
-                document.getElementById('y-dimension').value = values.y || '';
-                document.getElementById('z-dimension').value = values.z || '';
-                alert('Dimensões extraídas e distribuídas com sucesso.');
-            } else {
-                alert('Não foi possível encontrar valores válidos para X, Y e Z.');
-            }
-        }).catch(error => {
-            console.error('Erro no OCR:', error);
-            alert('Ocorreu um erro ao processar a imagem. Tente novamente.');
-        });
-    };
-
-    reader.readAsDataURL(file);
+        if (values) {
+            document.getElementById('x-dimension').value = values.x || '';
+            document.getElementById('y-dimension').value = values.y || '';
+            document.getElementById('z-dimension').value = values.z || '';
+            alert('Dimensões extraídas e distribuídas com sucesso.');
+        } else {
+            alert('Não foi possível encontrar valores válidos para X, Y e Z.');
+        }
+    }).catch(error => {
+        console.error('Erro no OCR:', error);
+        alert('Ocorreu um erro ao processar a imagem. Tente novamente.');
+    });
 }
 
 function extractAndDistributeValues(text) {
@@ -55,12 +40,37 @@ function extractAndDistributeValues(text) {
     return null;
 }
 
+function capturePhoto() {
+    const photoCanvas = document.getElementById('photo-canvas');
+    const cameraStream = document.getElementById('camera-stream');
+    const context = photoCanvas.getContext('2d');
+
+    photoCanvas.width = cameraStream.videoWidth;
+    photoCanvas.height = cameraStream.videoHeight;
+    context.drawImage(cameraStream, 0, 0, photoCanvas.width, photoCanvas.height);
+
+    const imageDataUrl = photoCanvas.toDataURL('image/png');
+    document.getElementById('captured-photo').src = imageDataUrl;
+    return imageDataUrl;
+}
+
+function handleImageFile(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const imageSource = e.target.result;
+            document.getElementById('image-preview').src = imageSource;
+            document.getElementById('image-preview').style.display = 'block';
+            document.getElementById('image-preview').dataset.imageSource = imageSource;
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+// Botão "Capturar Foto" e controle da câmera
 const cameraButton = document.getElementById('camera-button');
 const cameraStream = document.getElementById('camera-stream');
-const photoCanvas = document.getElementById('photo-canvas');
-const capturedPhoto = document.getElementById('captured-photo');
-const imageInput = document.getElementById('image-input');
-
 let stream = null;
 
 cameraButton.addEventListener('click', async () => {
@@ -74,23 +84,33 @@ cameraButton.addEventListener('click', async () => {
             alert('Erro ao acessar a câmera: ' + err.message);
         }
     } else {
-        capturePhoto();
-        stopCamera();
+        const capturedImage = capturePhoto();
+        document.getElementById('captured-photo').dataset.imageSource = capturedImage;
+        if (stream) {
+            const tracks = stream.getTracks();
+            tracks.forEach(track => track.stop());
+            stream = null;
+        }
+        cameraStream.style.display = 'none';
         cameraButton.textContent = 'Tirar Foto';
     }
 });
 
+// Controle do arquivo carregado
 const cameraInput = document.getElementById('camera-input');
-const imagePreview = document.getElementById('image-preview');
+cameraInput.addEventListener('change', handleImageFile);
 
-cameraInput.addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            imagePreview.src = e.target.result;
-            imagePreview.style.display = 'block'; // Exibe a pré-visualização
-        };
-        reader.readAsDataURL(file);
+// Botão "Ler dimensões"
+const readDimensionsButton = document.getElementById('read-dimensions-button');
+readDimensionsButton.addEventListener('click', () => {
+    const capturedPhoto = document.getElementById('captured-photo').dataset.imageSource;
+    const imagePreview = document.getElementById('image-preview').dataset.imageSource;
+
+    if (capturedPhoto) {
+        transcribeAndDistribute(capturedPhoto);
+    } else if (imagePreview) {
+        transcribeAndDistribute(imagePreview);
+    } else {
+        alert('Nenhuma imagem disponível para leitura. Capture uma foto ou carregue uma imagem.');
     }
 });

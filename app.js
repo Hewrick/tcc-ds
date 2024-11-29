@@ -141,6 +141,7 @@ window.addEventListener('resize', () => {
 // Zoom no scroll do mouse - fim
 
 
+
 // -__ funções historico __-
 
 function saveShapeToHistory(shapeType, dimensions, volume) {
