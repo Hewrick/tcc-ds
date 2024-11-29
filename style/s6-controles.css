@@ -1,0 +1,32 @@
+/* Controles */
+
+#controles {
+    position: relative;
+    z-index: 1;
+    width: 420px;
+    height: inherit;
+    padding: 10px;
+    margin-right: 10px;
+    background: #dac690;
+}
+
+#extractDimensions{
+    margin-bottom: 10px;
+}
+
+.control {
+    margin-bottom: 10px;
+}
+
+.inputDimension {
+    width: 98%;
+}
+
+#constroles input[type="file"] {
+    margin-bottom: 10px;
+}
+
+#constroles button {
+    display: block;
+    margin-bottom: 10px;
+}

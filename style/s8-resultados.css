@@ -1,0 +1,12 @@
+#escopo-results {
+    width: auto;
+    height: auto;
+    padding: 7%;
+    background-color: #f7dd95; 
+}
+
+#escopo-results h1{
+    margin-bottom: 16px;
+    color: #cc0000;
+}
+

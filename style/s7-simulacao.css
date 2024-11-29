@@ -1,0 +1,12 @@
+/* Simulação*/
+
+#simulacao {
+    position: relative;
+    width: 800px;
+    height: 550px;
+}
+
+canvas {
+    width: 80%;
+    border-radius: inherit;
+}

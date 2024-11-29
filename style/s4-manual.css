@@ -1,0 +1,8 @@
+/* Manual */
+
+#manual {
+    display: absolute;
+    background-color: #f7dd95;
+    margin: 30px auto 0;
+    height: 500px;
+}

@@ -3,13 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style/s1-geral-generico.css">
+  <link rel="stylesheet" href="style/s2-cabecalho.css">
+  <link rel="stylesheet" href="style/s3-historico.css">
+  <link rel="stylesheet" href="style/s4-manual.css">
+  <link rel="stylesheet" href="style/s5-capturar-foto.css">
+  <link rel="stylesheet" href="style/s6-controles.css">
+  <link rel="stylesheet" href="style/s7-simulacao.css">
+  <link rel="stylesheet" href="style/s8-resultados.css">
+  <link rel="favicon" href="logo.png">
   <title>ShapeX</title>
 </head>
 <body>
   <div id="content-geral">
     <ul id="header">
       <img id="logo-img" src="logo.png">
+      <li id="header-camera" onclick=""></li>
       <li id="header-historico" onclick="openModal()">Histórico</li>
     </ul>
     
@@ -46,13 +55,8 @@
 
 
         <section id="ocr-section">
-          <br>
           <input type="file" id="image-input" accept="image/*">
-          <br>
-          <br>
           <button onclick="transcribeAndDistribute()">Ler dimensões</button>
-          <br>
-          <br>
         
         <!-- Mudar tudo isso e colocar o resultado pronto em uma div na parte inferior do site ->
         <label for="calc-type">Selecione o cálculo</label>
@@ -67,9 +71,8 @@
         <button style="display: none" onclick="calculateArea()">Calcular Área</button>
         <button style="display: none" onclick="calculateVolume()">Calcular Volume</button>
         <button style="display: none" onclick="calculateApotema()">Calcular Apótema</button>
+
         
-        <br>
-<!--
         <div id="camera-container">
           <label for="camera-input" class="camera-label">Tirar Foto</label>
           <input type="file" id="camera-input" accept="image/*" capture="environment">
@@ -77,15 +80,11 @@
             <img id="image-preview" alt="Pré-visualização da imagem" />
           </div>
         </div>
-      </div>
--->
 
-      <br>
-        <button onclick="updateShape()"> Atualizar Dados e Forma</button>
+
+        <button onclick="updateShape()">Atualizar Dados e Forma</button>
         <div id="volume-display" style="margin-top: 10px;"></div>
         <button style="display: none" onclick="window.location.href='historico.html'">Histórico</button>
-        <br>
-        <br>
         <button style="display: none" onclick="window.location.href='index.html'">Voltar ao Início</button>
       </div>
 
@@ -100,7 +99,7 @@
         </div>
       </div>
     </div>
-  <!--
+  
     <div id="escopo-results" class="campo">
       <h1>Solução</h1>
       <span id="results"></span>
@@ -109,9 +108,9 @@
 
     <div id="manual">
 
-       </div>
+    </div>
   </div>
- -->
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.4/dist/tesseract.min.js"></script>
   <script src="app.js"></script>

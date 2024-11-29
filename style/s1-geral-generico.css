@@ -1,0 +1,85 @@
+/* 
+paleta de cores: 
+#e60000 - vermelho forte e claro
+#cc0000 - vermelho escuro
+#f7dd95 - bege pastel
+#550a0a - vermelho da borda
+*/
+
+* { box-sizing: border-box; }
+
+body {
+    background-color: black;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#content-geral {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: auto;
+    height: auto;
+    background: #000;
+}
+
+/* Fonte principal */
+.fonte1 {
+    font-family: Consolas, sans-serif;
+}
+
+/* Fonte secundária */
+.fonte2 {
+    font-family: Arial, sans-serif, Consolas;
+}
+
+/* .titulo { 
+
+}
+
+.subtitulo {
+
+} */
+ 
+.campo {
+    border-radius: 14px;
+}
+
+
+/* Partes específicas */
+
+#escopo-calc {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#dentro-da-borda {
+    padding: 10px;
+    background-color: #550a0a;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+/* Caminho do scroll */
+::-webkit-scrollbar-track { 
+
+    border-radius: 10px;
+}
+
+/* Botão do scroll */
+::-webkit-scrollbar-thumb {
+    background: #e60000; 
+    border-radius: 12px;
+}
+
+/* Hover no scroll */
+::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+}
