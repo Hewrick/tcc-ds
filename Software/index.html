@@ -44,9 +44,15 @@
           <span class="error-message" id="z-error" style="color: red;"></span>
         </div>
 
-        <input type="file" id="image-input" accept="image/*">
 
-        <button id="extractDimensions" onclick="extractDimensions()">Ler imagem e extrair dimensões</button>
+        <section id="ocr-section">
+          <br>
+          <input type="file" id="image-input" accept="image/*">
+          <br>
+          <br>
+          <button onclick="transcribeAndDistribute()">Processar e Distribuir</button>
+          <br>
+          <br>
         
         <!-- Mudar tudo isso e colocar o resultado pronto em uma div na parte inferior do site ->
         <label for="calc-type">Selecione o cálculo</label>
@@ -62,9 +68,14 @@
         <button style="display: none" onclick="calculateVolume()">Calcular Volume</button>
         <button style="display: none" onclick="calculateApotema()">Calcular Apótema</button>
         
+        <br>
+        <br>
+
         <button onclick="updateShape()">ATUALIZAR DADOS & FORMA</button>
         <div id="volume-display" style="margin-top: 10px;"></div>
         <button onclick="window.location.href='historico.html'">Histórico</button>
+        <br>
+        <br>
         <button onclick="window.location.href='index.html'">Voltar ao Início</button>
       </div>
 
