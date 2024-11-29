@@ -80,39 +80,17 @@ cameraButton.addEventListener('click', async () => {
     }
 });
 
-function capturePhoto() {
-    const context = photoCanvas.getContext('2d');
-    photoCanvas.width = cameraStream.videoWidth;
-    photoCanvas.height = cameraStream.videoHeight;
-    context.drawImage(cameraStream, 0, 0, photoCanvas.width, photoCanvas.height);
+const cameraInput = document.getElementById('camera-input');
+const imagePreview = document.getElementById('image-preview');
 
-    const imageData = photoCanvas.toDataURL('image/png');
-    capturedPhoto.src = imageData;
-    capturedPhoto.style.display = 'block';
-
-    // Simula o upload da imagem para ser usada no app
-    const imageBlob = dataURLToBlob(imageData);
-    const imageFile = new File([imageBlob], 'captured_photo.png', { type: 'image/png' });
-    const dataTransfer = new DataTransfer();
-    dataTransfer.items.add(imageFile);
-    imageInput.files = dataTransfer.files;
-}
-
-function stopCamera() {
-    if (stream) {
-        stream.getTracks().forEach(track => track.stop());
-        cameraStream.srcObject = null;
-        stream = null;
-        cameraStream.style.display = 'none';
+cameraInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = 'block'; // Exibe a pré-visualização
+        };
+        reader.readAsDataURL(file);
     }
-}
-
-function dataURLToBlob(dataURL) {
-    const [header, base64] = dataURL.split(',');
-    const binary = atob(base64);
-    const array = new Uint8Array(binary.length);
-    for (let i = 0; i < binary.length; i++) {
-        array[i] = binary.charCodeAt(i);
-    }
-    return new Blob([array], { type: header.split(':')[1].split(';')[0] });
-}
+});

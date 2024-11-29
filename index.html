@@ -71,13 +71,16 @@
         <br>
         <br>
 
-        <div id="camera-section">
-          <button id="camera-button">Tirar Foto</button>
-          <video id="camera-stream" autoplay style="display: none;"></video>
-          <canvas id="photo-canvas" style="display: none;"></canvas>
-          <img id="captured-photo" alt="Foto capturada" style="display: none;">
-          <input type="file" id="image-input" style="display: none;">
+        <div id="camera-container">
+          <label for="camera-input" class="camera-label">Tirar Foto</label>
+          <input type="file" id="camera-input" accept="image/*" capture="environment">
+          <div id="preview-container">
+            <img id="image-preview" alt="Pré-visualização da imagem" />
+          </div>
+        </div>
       </div>
+
+
       <br>
         <button onclick="updateShape()"> Atualizar Dados e Forma</button>
         <div id="volume-display" style="margin-top: 10px;"></div>
