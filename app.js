@@ -200,3 +200,4 @@ function openModal() {
 function closeModal() {
     document.getElementById('historico-modal').style.display = 'none';
 }
+
