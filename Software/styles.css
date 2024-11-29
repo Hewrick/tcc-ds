@@ -1,12 +1,15 @@
 /* 
 paleta de cores: 
-#e60000 - vermelho forte
+#e60000 - vermelho forte e claro
 #cc0000 - vermelho escuro
-
+#f7dd95 - bege pastel
+#550a0a - vermelho da borda
 */
 
 /* geral e genéricos */
-    
+
+* { box-sizing: border-box; }
+
 body {
     background-color: white;
     color: #333;
@@ -19,15 +22,27 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
+    width: auto;
+    height: auto;
     background: #000;
 }
 
+/* Fonte principal */
 .fonte1 {
     font-family: Consolas, sans-serif;
 }
 
+/* Fonte secundária */
 .fonte2 {
     font-family: Arial, sans-serif, Consolas;
+}
+
+.titulo {
+
+}
+
+.subtitulo {
+
 }
 
 .campo {
@@ -35,17 +50,43 @@ body {
 }
 
 
-/* Escopos específicos */
+/* Partes específicas */
 
 #escopo-calc {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin-bottom: 10px;
 }
 
 #dentro-da-borda {
     padding: 10px;
-    background-color: #ccb474;
+    background-color: #550a0a;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+/* Caminho do scroll */
+::-webkit-scrollbar-track { 
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track:hover {
+    
+}
+
+/* Botão do scroll */
+::-webkit-scrollbar-thumb {
+    background: red; 
+    border-radius: 10px;
+}
+
+/* Hover no scroll */
+::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
 }
 
 
@@ -56,6 +97,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 38px;
     margin: 0 0 16px;
     padding: 0;
     background-color: #0000;
@@ -84,7 +126,7 @@ body {
 
 #manual {
     display: absolute;
-    background-color:
+    background-color: #f7dd95;
     margin: 30px auto 0;
     height: 500px;
 }
@@ -92,14 +134,14 @@ body {
 
 /* Controles */
 
-#controls {
+#controles {
     position: relative;
     z-index: 1;
     width: 420px;
     height: 480px;
     padding: 10px;
     margin-right: 10px;
-    background: #fce8e8;
+    background: #dac690;
 }
 
 #extractDimensions{
@@ -114,11 +156,11 @@ body {
     width: 98%;
 }
 
-#constrols input[type="file"] {
+#constroles input[type="file"] {
     margin-bottom: 10px;
 }
 
-#constrols button {
+#constroles button {
     display: block;
     margin-bottom: 10px;
 }
@@ -133,6 +175,7 @@ body {
 }
 
 canvas {
+    width: 80%;
     border-radius: inherit;
 }
 
@@ -140,6 +183,7 @@ canvas {
 /* Resultados */
 
 #escopo-results {
+    flex: 
     width: auto;
     height: auto;
     padding: 7%;
