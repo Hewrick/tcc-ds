@@ -1,3 +1,10 @@
+/* 
+paleta de cores: 
+#e60000 - vermelho forte
+#cc0000 - vermelho escuro
+
+*/
+
 /* geral e genéricos */
     
 body {
@@ -10,114 +17,141 @@ body {
 
 #content-geral {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;                  /* essa linha deixa o espaço a mais feio */
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #e60000;
+    flex-direction: column;
     padding: 20px;
-    color: white;
+    background: #000;
 }
 
-.header-buttons button {
-    background-color: #e60000;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 10px;
+.fonte1 {
+    font-family: Consolas, sans-serif;
 }
 
-.header-buttons:hover button {
-    background-color: #cc0000;
+.fonte2 {
+    font-family: Arial, sans-serif, Consolas;
+}
+
+.campo {
+    border-radius: 14px;
 }
 
 
+/* Escopos específicos */
 
+#escopo-calc {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
 
-/* Manual */
-
-
+#dentro-da-borda {
+    padding: 10px;
+    background-color: #ccb474;
+}
 
 
 /* Cabeçalho */
 
+#header {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 16px;
+    padding: 0;
+    background-color: #0000;
+    color: white;
+}
 
+#header li {
+    border-radius: 14px;
+    padding: 10px 10px;
+    font-size: 16px;
+    background-color: #e60000;
+    color: #fff;
+    cursor: pointer;
+}
+
+#header li:hover {
+    background-color: #cc0000;
+}
+
+#header li:focus {
+    outline: none;
+}
+
+
+/* Manual */
+
+#manual {
+    display: absolute;
+    background-color:
+    margin: 30px auto 0;
+    height: 500px;
+}
 
 
 /* Controles */
 
 #controls {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+    position: relative;
     z-index: 1;
-    background: rgb(252, 232, 232);
+    width: 420px;
+    height: 480px;
     padding: 10px;
+    margin-right: 10px;
+    background: #fce8e8;
 }
+
 #extractDimensions{
     margin-bottom: 10px;
 }
+
 .control {
     margin-bottom: 10px;
 }
+
 .inputDimension {
     width: 98%;
 }
-input[type="file"] {
+
+#constrols input[type="file"] {
     margin-bottom: 10px;
 }
-button {
+
+#constrols button {
     display: block;
     margin-bottom: 10px;
-}
-
-canvas { display: flex; }
-
-#simulacao {
-    display: flex;
-}
-
-#results {
-    height: 100%;
-    background-color: blue; 
 }
 
 
 /* Simulação*/
 
+#simulacao {
+    position: relative;
+    width: 800px;
+    height: 550px;
+}
 
+canvas {
+    border-radius: inherit;
+}
 
 
 /* Resultados */
 
+#escopo-results {
+    width: auto;
+    height: auto;
+    padding: 7%;
+    background-color: #f7dd95; 
+}
 
+#escopo-results h1{
+    margin-bottom: 16px;
+    color: #cc0000;
+}
 
 
 /* Histórico */
-
-button {
-    background-color: #e60000;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-button:hover {
-    background-color: #cc0000;
-}
-
-button:focus {
-    outline: none;
-}
-
 
 

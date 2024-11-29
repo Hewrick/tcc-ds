@@ -9,63 +9,75 @@
 </head>
 <body>
   <div id="content-geral">
-    <div id="controls">
-      <div class="control">
-        <label for="shape-type">Selecione a forma:</label>
-        <select id="shape-type">
-          <option value="cube">Cubo</option>
-          <option value="pyramid">Pirâmide</option>
-          <option value="sphere">Esfera</option>
-        </select>
+    <ul id="header">
+      <li id="logo">[icone logo]</li>
+      <li id="header-historico">Histórico</li>
+    </ul>
+
+    <div id="dentro-da-borda" class="campo">
+    <div id="escopo-calc" class="campo">
+      <div id="controls" class="campo">
+        <div class="control">
+          <label for="shape-type">Selecione a forma:</label>
+          <select id="shape-type">
+            <option value="cube">Cubo</option>
+            <option value="pyramid">Pirâmide</option>
+            <option value="sphere">Esfera</option>
+          </select>
+        </div>
+
+        <div class="controls">
+          <label for="x-dimension">Dimensão X</label>
+          <input type="text" id="x-dimension" class="inputDimension" placeholder="Digite o valor em cm">
+          <span class="error-message" id="x-error" style="color: red;"></span>
+        </div>
+
+        <div class="controls" id="y-dimension-container">
+          <label for="y-dimension">Dimensão Y</label>
+          <input type="text" id="y-dimension" class="inputDimension" placeholder="Digite o valor em cm">
+          <span class="error-message" id="y-error" style="color: red;"></span>
+        </div>
+
+        <div class="controls" id="z-dimension-container">
+          <label for="z-dimension">Dimensão Z</label>
+          <input type="text" id="z-dimension" class="inputDimension" placeholder="Digite o valor em cm">
+          <span class="error-message" id="z-error" style="color: red;"></span>
+        </div>
+
+        <input type="file" id="image-input" accept="image/*">
+
+        <button id="extractDimensions" onclick="extractDimensions()">Ler imagem e extrair dimensões</button>
+        
+        <!-- Mudar tudo isso e colocar o resultado pronto em uma div na parte inferior do site ->
+        <label for="calc-type">Selecione o cálculo</label>
+        <select id="calc-type">  
+          <option value="area"></option>
+          <option value="volume"></option>
+          <option value="apotema"></option>
+          <option></option>
+        </select> -->
+
+        <button onclick="calculateVolume()">Calcular Volume</button>
+        <button style="display: none" onclick="calculateArea()">Calcular Área</button>
+        <button style="display: none" onclick="calculateVolume()">Calcular Volume</button>
+        <button style="display: none" onclick="calculateApotema()">Calcular Apótema</button>
+        
+        <button onclick="updateShape()">ATUALIZAR DADOS & FORMA</button>
+        <div id="volume-display" style="margin-top: 10px;"></div>
+        <button onclick="window.location.href='historico.html'">Histórico</button>
+        <button onclick="window.location.href='index.html'">Voltar ao Início</button>
       </div>
 
-      <div class="controls">
-        <label for="x-dimension">Dimensão X</label>
-        <input type="text" id="x-dimension" class="inputDimension" placeholder="Digite o valor em cm">
-        <span class="error-message" id="x-error" style="color: red;"></span>
-      </div>
-
-      <div class="controls" id="y-dimension-container">
-        <label for="y-dimension">Dimensão Y</label>
-        <input type="text" id="y-dimension" class="inputDimension" placeholder="Digite o valor em cm">
-        <span class="error-message" id="y-error" style="color: red;"></span>
-      </div>
-
-      <div class="controls" id="z-dimension-container">
-        <label for="z-dimension">Dimensão Z</label>
-        <input type="text" id="z-dimension" class="inputDimension" placeholder="Digite o valor em cm">
-        <span class="error-message" id="z-error" style="color: red;"></span>
-      </div>
-
-      <input type="file" id="image-input" accept="image/*">
-
-      <button id="extractDimensions" onclick="extractDimensions()">Ler imagem e extrair dimensões</button>
-      
-      <!-- Mudar tudo isso e colocar o resultado pronto em uma div na parte inferior do site ->
-      <label for="calc-type">Selecione o cálculo</label>
-      <select id="calc-type">  
-        <option value="area"></option>
-        <option value="volume"></option>
-        <option value="apotema"></option>
-        <option></option>
-      </select> -->
-
-      <button onclick="calculateVolume()">Calcular Volume</button>
-      <button style="display: none" onclick="calculateArea()">Calcular Área</button>
-      <button style="display: none" onclick="calculateVolume()">Calcular Volume</button>
-      <button style="display: none" onclick="calculateApotema()">Calcular Apótema</button>
-      
-      <button onclick="updateShape()">ATUALIZAR DADOS & FORMA</button>
-      <div id="volume-display" style="margin-top: 10px;"></div>
-      <button onclick="window.location.href='historico.html'">Histórico</button>
-      <button onclick="window.location.href='index.html'">Voltar ao Início</button>
+      <div id="simulacao" class="campo"></div> 
     </div>
 
-    <div id="simulacao">
-      
-    </div> 
+    <div id="escopo-results" class="campo">
+      <h1>Solução</h1>
+      <span id="results"></span>
+    </div>
+    </div>
 
-    <div id="results">
+    <div id="manual">
 
     </div>
   </div>
