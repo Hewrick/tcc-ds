@@ -161,3 +161,42 @@ function saveShapeToHistory(shapeType, dimensions, volume) {
 
   localStorage.setItem('shapeHistory', JSON.stringify(history));
 }
+
+// carregar histórico e exibir no modal
+function loadShapeHistory() {
+    const history = JSON.parse(localStorage.getItem('shapeHistory')) || [];
+    const historicoContent = document.getElementById('historico-content');
+    historicoContent.innerHTML = '';  // Limpar o conteúdo atual
+
+    const shapeNames = {
+        'cube': 'Cubo',
+        'pyramid': 'Pirâmide',
+        'sphere': 'Esfera'
+    };
+    
+    // ordena do mais recente para o mais antigo
+    history.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+    history.forEach(entry => {
+        const entryElement = document.createElement('div');
+        entryElement.innerHTML = `
+            <p><strong>Forma:</strong> ${shapeNames[entry.shapeType] || entry.shapeType}</p>
+            <p><strong>Dimensões:</strong> X: ${entry.dimensions.x}, Y: ${entry.dimensions.y}, Z: ${entry.dimensions.z}</p>
+            <p><strong>Volume:</strong> ${entry.volume.toFixed(2)} metros cúbicos</p>
+            <p><strong>Data:</strong> ${new Date(entry.timestamp).toLocaleString()}</p>
+            <hr>
+        `;
+        historicoContent.appendChild(entryElement);
+    });
+}
+
+// exibir o modal
+function openModal() {
+    loadShapeHistory();  
+    document.getElementById('historico-modal').style.display = 'block';
+}
+
+// fechar o modal
+function closeModal() {
+    document.getElementById('historico-modal').style.display = 'none';
+}

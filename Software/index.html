@@ -4,15 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="">
   <title>ShapeX</title>
 </head>
 <body>
   <div id="content-geral">
     <ul id="header">
-      <li id="logo">[icone logo]</li>
-      <li id="header-historico">Histórico</li>
+      <li id="logo"></li>
+      <!--<img src="logo.png">-->
+      <li id="header-historico" onclick="openModal()">Histórico</li>
     </ul>
+    
 
     <div id="dentro-da-borda" class="campo">
     <div id="escopo-calc" class="campo">
@@ -50,7 +51,7 @@
           <input type="file" id="image-input" accept="image/*">
           <br>
           <br>
-          <button onclick="transcribeAndDistribute()">Processar e Distribuir</button>
+          <button onclick="transcribeAndDistribute()">Ler dimensões</button>
           <br>
           <br>
         
@@ -71,17 +72,26 @@
         <br>
         <br>
 
-        <button onclick="updateShape()">ATUALIZAR DADOS & FORMA</button>
+        <button onclick="updateShape()"> Atualizar Dados e Forma</button>
         <div id="volume-display" style="margin-top: 10px;"></div>
-        <button onclick="window.location.href='historico.html'">Histórico</button>
+        <button style="display: none" onclick="window.location.href='historico.html'">Histórico</button>
         <br>
         <br>
-        <button onclick="window.location.href='index.html'">Voltar ao Início</button>
+        <button style="display: none" onclick="window.location.href='index.html'">Voltar ao Início</button>
       </div>
 
-      <div id="simulacao" class="campo"></div> 
+     <div id="simulacao" class="campo"></div> 
     </div>
 
+    <div id="historico-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2>Histórico de Cálculos</h2>
+        <div id="historico-content">
+        </div>
+      </div>
+    </div>
+  <!--
     <div id="escopo-results" class="campo">
       <h1>Solução</h1>
       <span id="results"></span>
@@ -90,11 +100,14 @@
 
     <div id="manual">
 
-    </div>
+       </div>
   </div>
+ -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.4/dist/tesseract.min.js"></script>
   <script src="app.js"></script>
   <script src="ocr.js"></script>
 </body>
+
+
 </html>

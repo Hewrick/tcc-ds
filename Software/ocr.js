@@ -16,11 +16,11 @@ function transcribeAndDistribute() {
         Tesseract.recognize(
             image,
             'eng',
-            { logger: m => console.log(m) } // Loga o progresso
+            { logger: m => console.log(m) } 
         ).then(({ data: { text } }) => {
             console.log('Texto reconhecido:', text);
 
-            // Extração e distribuição
+            // extrair e distribuir corretamente
             const values = extractAndDistributeValues(text);
 
             if (values) {
