@@ -1,0 +1,247 @@
+/* 
+paleta de cores: 
+#e60000 - vermelho forte e claro
+#cc0000 - vermelho escuro
+#f7dd95 - bege pastel
+#550a0a - vermelho da borda
+*/
+
+/* geral e genéricos */
+
+* { box-sizing: border-box; }
+
+body {
+    background-color: black;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#content-geral {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: auto;
+    height: auto;
+    background: #000;
+}
+
+/* Fonte principal */
+.fonte1 {
+    font-family: Consolas, sans-serif;
+}
+
+/* Fonte secundária */
+.fonte2 {
+    font-family: Arial, sans-serif, Consolas;
+}
+
+/* .titulo { 
+
+}
+
+.subtitulo {
+
+} */
+ 
+.campo {
+    border-radius: 14px;
+}
+
+
+/* Partes específicas */
+
+#escopo-calc {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#dentro-da-borda {
+    padding: 10px;
+    background-color: #550a0a;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+/* Caminho do scroll */
+::-webkit-scrollbar-track { 
+
+    border-radius: 10px;
+}
+
+/* Botão do scroll */
+::-webkit-scrollbar-thumb {
+    background: #e60000; 
+    border-radius: 12px;
+}
+
+/* Hover no scroll */
+::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+}
+
+
+/* Cabeçalho */
+
+#header {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 38px;
+    margin: 0 0 16px;
+    padding: 0;
+    background-color: #0000;
+    color: white;
+}
+
+#header li {
+    border-radius: 14px;
+    padding: 10px 10px;
+    font-size: 16px;
+    background-color: #e60000;
+    color: #fff;
+    cursor: pointer;
+}
+
+#header li:hover {
+    background-color: #cc0000;
+}
+
+#header li:focus {
+    outline: none;
+}
+
+#header #logo-img {
+    width: 50px;
+}
+
+
+/* Manual */
+
+#manual {
+    display: absolute;
+    background-color: #f7dd95;
+    margin: 30px auto 0;
+    height: 500px;
+}
+
+
+/* Controles */
+
+#controles {
+    position: relative;
+    z-index: 1;
+    width: 420px;
+    height: inherit;
+    padding: 10px;
+    margin-right: 10px;
+    background: #dac690;
+}
+
+#extractDimensions{
+    margin-bottom: 10px;
+}
+
+.control {
+    margin-bottom: 10px;
+}
+
+.inputDimension {
+    width: 98%;
+}
+
+#constroles input[type="file"] {
+    margin-bottom: 10px;
+}
+
+#constroles button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+/* Simulação*/
+
+#simulacao {
+    position: relative;
+    width: 800px;
+    height: 550px;
+}
+
+canvas {
+    width: 80%;
+    border-radius: inherit;
+}
+
+
+/* Resultados */
+
+#escopo-results {
+    width: auto;
+    height: auto;
+    padding: 7%;
+    background-color: #f7dd95; 
+}
+
+#escopo-results h1{
+    margin-bottom: 16px;
+    color: #cc0000;
+}
+
+
+/* Histórico */
+
+/* Modal */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+  }
+  
+  /* conteudo do modal */
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-height: 80%; 
+    overflow-y: auto; 
+    position: relative;
+  }
+  
+  /* area do historico */
+  #historico-content {
+    max-height: 300px; 
+    overflow-y: auto; 
+    padding-right: 10px; 
+  }
+  
+  /* fechar o modal */
+  .close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close-btn:hover,
+  .close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
