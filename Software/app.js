@@ -162,7 +162,7 @@ function saveShapeToHistory(shapeType, dimensions, volume) {
   localStorage.setItem('shapeHistory', JSON.stringify(history));
 }
 
-// carregar histórico e exibir no modal
+// Carregar histórico e exibir no modal
 function loadShapeHistory() {
     const history = JSON.parse(localStorage.getItem('shapeHistory')) || [];
     const historicoContent = document.getElementById('historico-content');
@@ -174,7 +174,7 @@ function loadShapeHistory() {
         'sphere': 'Esfera'
     };
     
-    // ordena do mais recente para o mais antigo
+    // Ordena do mais recente para o mais antigo
     history.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
     history.forEach(entry => {
@@ -190,13 +190,13 @@ function loadShapeHistory() {
     });
 }
 
-// exibir o modal
+// Exibir o modal
 function openModal() {
-    loadShapeHistory();  
+    loadShapeHistory();  // Carregar o histórico no modal
     document.getElementById('historico-modal').style.display = 'block';
 }
 
-// fechar o modal
+// Fechar o modal
 function closeModal() {
     document.getElementById('historico-modal').style.display = 'none';
 }
