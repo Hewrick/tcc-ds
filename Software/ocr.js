@@ -1,113 +1,56 @@
-/* Código para reconhecimento ótico de caracteres
- * 
- * 
- */
-
-function extractDimensions() {
+function transcribeAndDistribute() {
     const imageInput = document.getElementById('image-input');
     const file = imageInput.files[0];
 
     if (!file) {
-        alert('Por favor, selecione uma imagem primeiro.');
+        alert('Por favor, selecione uma imagem.');
         return;
     }
 
     const reader = new FileReader();
 
-    reader.onload = function(event) {
+    reader.onload = function (event) {
         const image = new Image();
         image.src = event.target.result;
 
         Tesseract.recognize(
             image,
             'eng',
-            { logger: m => console.log(m) }
+            { logger: m => console.log(m) } 
         ).then(({ data: { text } }) => {
-            const dimensions = extractDimensionsFromText(text);
+            console.log('Texto reconhecido:', text);
 
-            if (dimensions) {
-                document.getElementById('x-dimension').value = dimensions.x;
-                document.getElementById('y-dimension').value = dimensions.y;
-                document.getElementById('z-dimension').value = dimensions.z;
+            // extrair e distribuir corretamente
+            const values = extractAndDistributeValues(text);
+
+            if (values) {
+                document.getElementById('x-dimension').value = values.x || '';
+                document.getElementById('y-dimension').value = values.y || '';
+                document.getElementById('z-dimension').value = values.z || '';
+                alert('Dimensões extraídas e distribuídas com sucesso.');
             } else {
-                alert('Dimensões não encontradas na imagem.');
+                alert('Não foi possível encontrar valores válidos para X, Y e Z.');
             }
+        }).catch(error => {
+            console.error('Erro no OCR:', error);
+            alert('Ocorreu um erro ao processar a imagem. Tente novamente.');
         });
     };
 
     reader.readAsDataURL(file);
 }
 
-function extractDimensionsFromText(text) {
-    const regex = /X:\s*(\d+)\s*Y:\s*(\d+)\s*Z:\s*(\d+)/i;
+function extractAndDistributeValues(text) {
+    const regex = /X\s*=\s*(\d+)\s*.*?Y\s*=\s*(\d+)\s*.*?Z\s*=\s*(\d+)/i;
     const match = text.match(regex);
 
     if (match) {
         return {
-            x: match[1],
-            y: match[2],
-            z: match[3]
+            x: parseInt(match[1], 10),
+            y: parseInt(match[2], 10),
+            z: parseInt(match[3], 10),
         };
     }
 
     return null;
-}
-
-document.querySelectorAll('#x-dimension, #y-dimension, #z-dimension').forEach(input => {
-    input.addEventListener('input', validateDimensions);
-});
-
-
-function validateDimensions() {
-    let valid = true;
-    const xValue = document.getElementById('x-dimension').value;
-    const yValue = document.getElementById('y-dimension').value;
-    const zValue = document.getElementById('z-dimension').value;
- 
-    // Validate X dimension
-    if (!isPositiveNumber(xValue)) {
-        document.getElementById('x-error').textContent = 'Valor inválido para cálculo';
-        valid = false;
-    } else {
-        document.getElementById('x-error').textContent = '';
-        valid = true;
-    }
- 
-    // Validate Y dimension
-    if (!isPositiveNumber(yValue)) {
-        document.getElementById('y-error').textContent = 'Valor inválido para cálculo';
-        valid = false;
-    } else {
-        document.getElementById('y-error').textContent = '';
-        valid = true;
-    }
- 
-    // Validate Z dimension
-    if (!isPositiveNumber(zValue)) {
-        document.getElementById('z-error').textContent = 'Valor inválido para cálculo';
-        valid = false;
-    } else {
-        document.getElementById('z-error').textContent = '';
-        valid = true;
-    }
- 
-    // Enable or disable buttons based on validation
-    toggleButtons(valid);
-}
- 
-// Função para validar se o número é positivo e sem texto ou símbolos
-function isPositiveNumber(value) {
-    return /^\d+(\.\d+)?$/.test(value); // Verifica se é um número positivo (inteiro ou decimal)
-}
- 
-// Habilita ou desabilita botões com base na validação
-function toggleButtons(valid) {
-    const buttonsToDisable = [
-        document.getElementById('image-input'),
-        document.querySelector('button[onclick="readImageAndExtractDimensions()"]'),
-        document.querySelector('button[onclick="updateShape()"]')
-    ];
-    buttonsToDisable.forEach(button => {
-        button.disabled = !valid;
-    });
 }
